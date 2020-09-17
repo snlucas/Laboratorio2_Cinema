@@ -110,19 +110,4 @@ public class ControladorReserva implements InterfaceControladorReserva {
         }
 
     }
-
-    public String x(ArrayList<Reserva> reservas) {
-        String assentoLivre = " ";
-        String assentoOcupado = "X";
-
-        for (int i = 0; i < reservas.size(); i++) {
-            String coluna = String.format(
-                    " |_%s_|_%s_|_%s_|_%s_|_%s_|_%s_|_%s_|    |_%s_|_%s_|_%s_|_%s_|_%s_|_%s_|_%s_|", assentoLivre,
-                    assentoLivre, assentoLivre, assentoLivre, assentoLivre, assentoLivre, assentoLivre, assentoLivre,
-                    assentoLivre, assentoLivre, assentoLivre, assentoLivre, assentoOcupado, assentoLivre);
-        }
-
-        return "";
-    }
-
 }

@@ -1,5 +1,7 @@
 package reserva;
 
+import java.util.ArrayList;
+
 /**
  * 
  * Interface com sketch de metodos a ver com reserva
@@ -29,5 +31,5 @@ public interface InterfaceControladorReserva {
      * Metodo para mostrar um mapa com assentos livres/ocupados e total 
      * de assentos livres/ocupados
      */
-    public abstract void mostrarMapaDaSala();
+    public abstract void mostrarMapaDaSala(ArrayList<Reserva> listReservas);
 }

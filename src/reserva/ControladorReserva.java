@@ -12,6 +12,7 @@ public class ControladorReserva implements InterfaceControladorReserva {
     /**
      * 
      * Construtor da classe ControladorReserva
+     * 
      * @param reservas lista de reservas do tipo Reserva
      */
     public ControladorReserva(ArrayList<Reserva> reservas) {
@@ -28,6 +29,15 @@ public class ControladorReserva implements InterfaceControladorReserva {
 
     public ArrayList<Reserva> getListReservas() {
         return this.listReservas;
+    }
+
+    public ArrayList<String> getCodReservas(ArrayList<Reserva> listReservas) {
+        ArrayList<String> codReservas = new ArrayList<>();
+
+        for (int i = 0; i < listReservas.size(); i++)
+            codReservas.add(listReservas.get(i).getCodigoAssento());
+
+        return codReservas;
     }
 
     @Override
@@ -48,9 +58,71 @@ public class ControladorReserva implements InterfaceControladorReserva {
     }
 
     @Override
-    public void mostrarMapaDaSala() {
-        
+    public void mostrarMapaDaSala(ArrayList<Reserva> listReservas) {
+        String[] fileiras = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L" };
+        String linha = " ______________________________________________________      ______________________________________________________ ";
+        String[][] mapa = new String[fileiras.length + 1][17];
+        ArrayList<String> codAssentos = this.getCodReservas(listReservas);
+
+
+        System.out.println(linha);
+        for (int i = 0; i <= fileiras.length; i++) {
+            for (int j = 0; j < mapa[0].length; j++) {
+                // Desenha numero das fileiras
+                if (i == fileiras.length) {
+                    if (j > 0 && j < 16) {
+                        if (j == 8) {
+                            // Coloca espacamento entre colunas (conjunto de 7)
+                            mapa[i][j] = "    ";
+                        } else {
+                            // Coloca numero de identificacao
+                            if (j < 10) {
+                                mapa[i][j] = String.format("|__%d__|", j);
+                            } else {
+                                mapa[i][j] = String.format("|__%d_|", j);
+                            }
+                        }
+                    } else {
+                        // Coloca espacamento inicial e final
+                        mapa[i][j] = "       ";
+                    }
+                } else {
+                    for (String cod : codAssentos) {
+                        if (j == 0 || j == 16) {
+                            // Coloca letra de identificacao da fileira
+                            mapa[i][j] = String.format("|__%s__|", fileiras[i]);
+                        } else if (j == 8) {
+                            // Coloca espacamento entre colunas (conjunto de 7)
+                            mapa[i][j] = "    ";
+                        } else {
+                            if ((cod.split("")[0].equals(fileiras[i]))
+                                    && (cod.split("")[1].equals(Integer.toString(j)))) {
+                                // Assento ocupado
+                                mapa[i][j] = "|__X__|";
+                            } else {
+                                // Assento livre
+                                mapa[i][j] = "|__ __|";
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
     }
-    
+
+    public String x(ArrayList<Reserva> reservas) {
+        String assentoLivre = " ";
+        String assentoOcupado = "X";
+
+        for (int i = 0; i < reservas.size(); i++) {
+            String coluna = String.format(
+                    " |_%s_|_%s_|_%s_|_%s_|_%s_|_%s_|_%s_|    |_%s_|_%s_|_%s_|_%s_|_%s_|_%s_|_%s_|", assentoLivre,
+                    assentoLivre, assentoLivre, assentoLivre, assentoLivre, assentoLivre, assentoLivre, assentoLivre,
+                    assentoLivre, assentoLivre, assentoLivre, assentoLivre, assentoOcupado, assentoLivre);
+        }
+
+        return "";
+    }
+
 }

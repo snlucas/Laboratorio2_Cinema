@@ -139,39 +139,4 @@ public class ControladorReserva implements InterfaceControladorReserva {
             System.out.println();
         }
     }
-
-    /**
-     * 
-     * Metodo getMapaDaSala Atribui a uma matriz todo o mapa da Sala com assentos
-     * livres/ocupados
-     * 
-     * @return mapa da sala
-     */
-    /*
-     * public String[][] getMapaDaSala() { String[] fileiras = { "A", "B", "C", "D",
-     * "E", "F", "G", "H", "I", "J", "K", "L" }; String linha =
-     * " ______________________________________________________      ______________________________________________________ "
-     * ; String[][] mapa = new String[fileiras.length + 2][18]; ArrayList<String>
-     * codAssentos = this.getCodReservas();
-     * 
-     * 
-     * mapa[0][0] = linha; for (int i = 1; i <= fileiras.length; i++) { for (int j =
-     * 1; j < mapa[0].length; j++) { // Desenha numero das fileiras if (i ==
-     * fileiras.length) { if (j > 0 && j < 16) { if (j == 8) { // Coloca espacamento
-     * entre colunas (conjunto de 7) mapa[i][j] = "    "; } else { // Coloca numero
-     * de identificacao if (j < 10) { mapa[i][j] = String.format("|__%d__|", j); }
-     * else { mapa[i][j] = String.format("|__%d_|", j); } } } else { // Coloca
-     * espacamento inicial e final mapa[i][j] = "       "; } } else { for (String
-     * cod : codAssentos) { if (j == 0 || j == 16) { // Coloca letra de
-     * identificacao da fileira mapa[i][j] = String.format("|__%s__|", fileiras[i]);
-     * } else if (j == 8) { // Coloca espacamento entre colunas (conjunto de 7)
-     * mapa[i][j] = "    "; } else { if ((cod.split("")[0].equals(fileiras[i])) &&
-     * (cod.split("")[1].equals(Integer.toString(j)))) { // Assento ocupado
-     * mapa[i][j] = "|__X__|"; } else { // Assento livre mapa[i][j] = "|__ __|"; } }
-     * } } } }
-     * 
-     * return mapa;
-     * 
-     * }
-     */
 }
